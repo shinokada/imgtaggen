@@ -2,7 +2,7 @@
 
 import yargs from "yargs";
 import clipboardy from "clipboardy";
-import { version } from '../package.json';
+import info from '../package.json' assert { type: 'json' };
 
 yargs(process.argv.slice(2))
   .scriptName("imgtaggen")
@@ -31,7 +31,7 @@ yargs(process.argv.slice(2))
     console.log('noclipboard:', argv.noclipboard)
     generateImgTag(argv.noavif, argv.nowebp, argv.noclipboard);
   })
-  .version(version)
+  .version(info.version)
   .help()
   .argv
 
