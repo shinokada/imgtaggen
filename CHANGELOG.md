@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/shinokada/imgtaggen/compare/v1.3.5...v1.4.0) (2023-02-04)
+
+
+### Features
+
+* change to commonjs, change node-clipboardy ([ec76c23](https://github.com/shinokada/imgtaggen/commit/ec76c234cf9a653970a638f00076adada18aa7b7))
+
 ### [1.3.5](https://github.com/shinokada/imgtaggen/compare/v1.3.4...v1.3.5) (2023-02-04)
 
 ### [1.3.4](https://github.com/shinokada/imgtaggen/compare/v1.3.3...v1.3.4) (2023-02-04)
