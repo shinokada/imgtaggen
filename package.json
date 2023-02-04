@@ -12,7 +12,8 @@
     "yargs": "^17.6.2"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "package":"standard-version && git push --follow-tags origin main && npm publish"
   },
   "author": "",
   "license": "MIT"
