@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  clipboardy: ^3.0.0
+  node-clipboardy: ^1.0.3
   yargs: ^17.6.2
 
 dependencies:
-  clipboardy: 3.0.0
+  node-clipboardy: 1.0.3
   yargs: 17.6.2
 
 packages:
@@ -24,15 +24,6 @@ packages:
 
   /arch/2.2.0:
     resolution: {integrity: sha512-Of/R0wqp83cgHozfIYLbBMnej79U/SVGOOyuB3VVFv1NRM/PSFMK12x9KVtiYzJqmnU5WR2qp0Z5rHb7sWGnFQ==}
-    dev: false
-
-  /clipboardy/3.0.0:
-    resolution: {integrity: sha512-Su+uU5sr1jkUy1sGRpLKjKrvEOVXgSgiSInwa/qeID6aJ07yh+5NWc3h2QfjHjBnfX4LhtFcuAWKUsJ3r+fjbg==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      arch: 2.2.0
-      execa: 5.1.1
-      is-wsl: 2.2.0
     dev: false
 
   /cliui/8.0.1:
@@ -137,6 +128,15 @@ packages:
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
+    dev: false
+
+  /node-clipboardy/1.0.3:
+    resolution: {integrity: sha512-/ErAFOtWDNhZh38rrwlAo05Soxbht/rgWugLOt2Ds+NDpZ+2sPiGiwOmFWzV+65fUYjwi+EJfHByIJ4waTHbVg==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      arch: 2.2.0
+      execa: 5.1.1
+      is-wsl: 2.2.0
     dev: false
 
   /npm-run-path/4.0.1:

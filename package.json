@@ -6,9 +6,8 @@
   "bin": {
     "imgtaggen": "bin/index.js"
   },
-  "type": "module",
   "dependencies": {
-    "clipboardy": "^3.0.0",
+    "node-clipboardy": "^1.0.3",
     "yargs": "^17.6.2"
   },
   "scripts": {

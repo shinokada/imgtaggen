@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import yargs from "yargs";
-import clipboardy from "clipboardy";
-import info from '../package.json' assert { type: 'json' };
+const yargs = require("yargs");
+const clipboardy = require("node-clipboardy");
+const info = require('../package.json');
 
 yargs(process.argv.slice(2))
   .scriptName("imgtaggen")
