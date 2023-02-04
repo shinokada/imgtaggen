@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/shinokada/imgtaggen/compare/v1.4.0...v1.5.0) (2023-02-04)
+
+
+### Features
+
+* add positional path/to/image ([8dbabc6](https://github.com/shinokada/imgtaggen/commit/8dbabc68bb1179b0f44afefc7420ee9550ff08e1))
+
 ## [1.4.0](https://github.com/shinokada/imgtaggen/compare/v1.3.5...v1.4.0) (2023-02-04)
 
 
