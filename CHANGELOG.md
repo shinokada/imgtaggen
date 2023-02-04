@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/shinokada/imgtaggen/compare/v1.5.0...v1.5.1) (2023-02-04)
+
+
+### Bug Fixes
+
+* change static to public dir ([0e20a10](https://github.com/shinokada/imgtaggen/commit/0e20a1044d95a6f95e765b2617dbc985355ea777))
+
 ## [1.5.0](https://github.com/shinokada/imgtaggen/compare/v1.4.0...v1.5.0) (2023-02-04)
 
 
