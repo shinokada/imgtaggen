@@ -17,26 +17,6 @@
 A CLI tool for generating a responsive image tag with support for AVIF and WebP formats
 
 
-<p align="center">
-<picture>
-  <source
-    type="image/avif"
-    srcset="public/images/imgtaggen.avif?width=100 100w, public/images/imgtaggen.avif?width=200 200w, public/images/imgtaggen.avif?width=400 400w, public/images/imgtaggen.avif?width=800 800w" />
-  <source
-    type="image/webp"
-    srcset="public/images/imgtaggen.webp?width=100 100w, public/images/imgtaggen.webp?width=200 200w, public/images/imgtaggen.webp?width=400 400w, public/images/imgtaggen.webp?width=800 800w" />
-  <img
-    src="public/images/imgtaggen.png"
-    srcset="public/images/imgtaggen.png?width=100 100w, public/images/imgtaggen.png?width=200 200w, public/images/imgtaggen.png?width=400 400w, public/images/imgtaggen.png?width=800 800w"
-    sizes="(max-width: 800px) 100vw, 50vw"
-    style="width: 100%; aspect-ratio: 16/9"
-    loading="lazy"
-    decoding="async"
-    alt="Builder.io drag and drop interface"
-  />
-</picture>
-</p>
-
 ## Installation
 
 ```
@@ -47,10 +27,13 @@ npm i -g imgtaggen
 
 imgtaggen [path/to/image]
 
+### Positionals
+
 |Positionals|Description| Default|
 |--|--|--|
 |path | Path to the image file |  [string] [default: "/image"]|
 
+### Options
 
 |Options|Description|Default|
 |--|--|--|
