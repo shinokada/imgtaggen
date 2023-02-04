@@ -1,6 +1,6 @@
 {
   "name": "imgtaggen",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A CLI tool for generating a responsive image tag with support for AVIF and WebP formats",
   "main": "imgtaggen.js",
   "bin": {
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "package":"standard-version && git push --follow-tags origin main && npm publish"
+    "package": "standard-version && git push --follow-tags origin main && npm publish"
   },
   "author": "",
   "license": "MIT"
