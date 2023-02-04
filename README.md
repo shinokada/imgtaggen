@@ -64,6 +64,8 @@ The above code is in your clipboard, you just need to paster it and update for y
 imgtaggen --noavif
 ```
 
+Output:
+
 ```html
 <picture>
   <source
@@ -85,6 +87,8 @@ imgtaggen --noavif
 imgtaggen --nowebp
 ```
 
+Output:
+
 ```html
 <picture>
   <source
@@ -105,6 +109,8 @@ imgtaggen --nowebp
 ```bash
 imgtaggen --nowebp --noavif
 ```
+
+Output:
 
 ```html
 <picture>
