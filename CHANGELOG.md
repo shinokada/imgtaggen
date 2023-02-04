@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/shinokada/imgtaggen/compare/v1.3.2...v1.3.3) (2023-02-04)
+
+
+### Bug Fixes
+
+* version from package.json ([9d8022d](https://github.com/shinokada/imgtaggen/commit/9d8022dc610e5959a481203bcfe221e9ac05cb10))
+* version from package.json ([fc07430](https://github.com/shinokada/imgtaggen/commit/fc07430ed22c4639c9e3862d253a414573ddde18))
+
 ### [1.3.2](https://github.com/shinokada/imgtaggen/compare/v1.3.1...v1.3.2) (2023-02-04)
 
 ### [1.3.1](https://github.com/shinokada/imgtaggen/compare/v1.3.0...v1.3.1) (2023-02-04)
