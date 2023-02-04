@@ -6,7 +6,7 @@ const info = require('../package.json');
 
 yargs(process.argv.slice(2))
   .scriptName("imgtaggen")
-  .usage('$0 <cmd> [args]')
+  .usage('$0 [path/to/image]')
   .options({
     noavif: {
       type: 'boolean',
@@ -23,37 +23,43 @@ yargs(process.argv.slice(2))
       default: false,
       describe: 'Do not copy the image tag to the clipboard'
     }
-  }).command('*', "Fallback command", (yargs) => {
+  }).command('*', "Image path (optional)", (yargs) => {
+    yargs.positional('path', {
+      describe: 'Path to the image file',
+      type: 'string',
+      default: '/image'
+    })
   }, (argv) => {
     console.log('Generating image tag...')
     console.log('noavif:', argv.noavif)
     console.log('nowebp:', argv.nowebp)
     console.log('noclipboard:', argv.noclipboard)
-    generateImgTag(argv.noavif, argv.nowebp, argv.noclipboard);
+    const path = yargs.argv._[0] || '/image';
+    generateImgTag(argv.noavif, argv.nowebp, argv.noclipboard, path);
   })
   .version(info.version)
   .help()
   .argv
 
 
-function generateImgTag (noavif, nowebp, noclipboard) {
+function generateImgTag (noavif, nowebp, noclipboard, path) {
   let tag = `<picture>\n`;
 
   if (!noavif) {
     tag += `  <source\n`;
     tag += `    type="image/avif"\n`;
-    tag += `    srcset="/image.avif?width=100 100w, /image.avif?width=200 200w, /image.avif?width=400 400w, /image.avif?width=800 800w" />\n`;
+    tag += `    srcset="${path}.avif?width=100 100w, ${path}.avif?width=200 200w, ${path}.avif?width=400 400w, ${path}.avif?width=800 800w" />\n`;
   }
 
   if (!nowebp) {
     tag += `  <source\n`;
     tag += `    type="image/webp"\n`;
-    tag += `    srcset="/image.webp?width=100 100w, /image.webp?width=200 200w, /image.webp?width=400 400w, /image.webp?width=800 800w" />\n`;
+    tag += `    srcset="${path}.webp?width=100 100w, ${path}.webp?width=200 200w, ${path}.webp?width=400 400w, ${path}.webp?width=800 800w" />\n`;
   }
 
   tag += `  <img\n`;
-  tag += `    src="/image.png"\n`;
-  tag += `    srcset="/image.png?width=100 100w, /image.png?width=200 200w, /image.png?width=400 400w, /image.png?width=800 800w"\n`;
+  tag += `    src="${path}.png"\n`;
+  tag += `    srcset="${path}.png?width=100 100w, ${path}.png?width=200 200w, ${path}.png?width=400 400w, ${path}.png?width=800 800w"\n`;
   tag += `    sizes="(max-width: 800px) 100vw, 50vw"\n`;
   tag += `    style="width: 100%; aspect-ratio: 16/9"\n`;
   tag += `    loading="lazy"\n`;
@@ -62,7 +68,6 @@ function generateImgTag (noavif, nowebp, noclipboard) {
   tag += `  />\n`;
   tag += `</picture>\n`;
 
-  
 
   if (!noclipboard) {
     clipboardy.writeSync(tag);
