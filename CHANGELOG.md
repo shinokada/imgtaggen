@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/shinokada/imgtaggen/compare/v1.6.1...v1.6.2) (2023-02-05)
+
+
+### Bug Fixes
+
+* update service-worker version ([8990c3c](https://github.com/shinokada/imgtaggen/commit/8990c3c28f87ecbf0b93a8e83811c40b548a1214))
+
 ### [1.6.1](https://github.com/shinokada/imgtaggen/compare/v1.6.0...v1.6.1) (2023-02-05)
 
 
