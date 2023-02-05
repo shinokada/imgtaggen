@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/shinokada/imgtaggen/compare/v1.5.1...v1.6.0) (2023-02-05)
+
+
+### Features
+
+* add sizes option ([4c36d04](https://github.com/shinokada/imgtaggen/commit/4c36d0487740e39549e2d57efcc3fabe73d671d4))
+
+
+### Bug Fixes
+
+* remove top image ([d426ec7](https://github.com/shinokada/imgtaggen/commit/d426ec7d53946c8f5d140db3993821694dc7ba40))
+
 ### [1.5.1](https://github.com/shinokada/imgtaggen/compare/v1.5.0...v1.5.1) (2023-02-04)
 
 
