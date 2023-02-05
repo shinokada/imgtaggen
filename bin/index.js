@@ -2,7 +2,9 @@
 
 const yargs = require("yargs");
 const clipboardy = require("node-clipboardy");
-const info = require('../package.json');
+const sharp = require("sharp");
+const path = require("path")
+const {version} = require('../package.json');
 
 yargs(process.argv.slice(2))
   .scriptName("imgtaggen")
@@ -22,6 +24,13 @@ yargs(process.argv.slice(2))
       type: 'boolean',
       default: false,
       describe: 'Do not copy the image tag to the clipboard'
+    },
+    sizes: {
+      type: 'array',
+      describe: 'List of sizes to generate',
+      demandOption: true,
+      default: [100, 200, 400, 800],
+      alias: 's'
     }
   }).command('*', "Image path (optional)", (yargs) => {
     yargs.positional('path', {
@@ -34,40 +43,57 @@ yargs(process.argv.slice(2))
     console.log('noavif:', argv.noavif)
     console.log('nowebp:', argv.nowebp)
     console.log('noclipboard:', argv.noclipboard)
-    const path = yargs.argv._[0] || '/image';
-    generateImgTag(argv.noavif, argv.nowebp, argv.noclipboard, path);
+    console.log('sizes:', argv.sizes)
+    const inputFile = yargs.argv._[0] || '/image';
+    // const inputFile = yargs.args._[0];
+    console.log('input file:', inputFile)
+    generateImgTag(argv.noavif, argv.nowebp, argv.noclipboard, argv.sizes, inputFile);
   })
-  .version(info.version)
+  .version(version)
   .help()
   .argv
 
+async function findAspectRatio(filepath) {
+  const image = sharp(filepath);
+  const metadata = await image.metadata();
+  return metadata.width / metadata.height;
+}
 
-function generateImgTag (noavif, nowebp, noclipboard, path) {
+async function generateImgTag (noavif, nowebp, noclipboard, sizes, inputFile) {
+  const directory = `${path.dirname(inputFile)}/`;
+  console.log('dir:', directory)
+  const inputFileBase = path.basename(inputFile);
+  console.log('input file base:', inputFileBase)
+  const { name, ext } = path.parse(inputFileBase);
+  console.log('name, ext:', name, ext)
   let tag = `<picture>\n`;
 
   if (!noavif) {
     tag += `  <source\n`;
     tag += `    type="image/avif"\n`;
-    tag += `    srcset="${path}.avif?width=100 100w, ${path}.avif?width=200 200w, ${path}.avif?width=400 400w, ${path}.avif?width=800 800w" />\n`;
+    tag += `    srcset="` + sizes.map(size => `${directory}${name}.avif?width=${size} ${size}w`).join(', ') + `" />\n`;
   }
-
+console.log('done noavif')
   if (!nowebp) {
     tag += `  <source\n`;
     tag += `    type="image/webp"\n`;
-    tag += `    srcset="${path}.webp?width=100 100w, ${path}.webp?width=200 200w, ${path}.webp?width=400 400w, ${path}.webp?width=800 800w" />\n`;
+    tag += `    srcset="` + sizes.map(size => `${directory}${name}.webp?width=${size} ${size}w`).join(', ') + `" />\n`;
   }
-
+  
+  const ratio = await findAspectRatio(inputFile);
+  console.log('ratio:', ratio)
   tag += `  <img\n`;
-  tag += `    src="${path}.png"\n`;
-  tag += `    srcset="${path}.png?width=100 100w, ${path}.png?width=200 200w, ${path}.png?width=400 400w, ${path}.png?width=800 800w"\n`;
+  tag += `    src="${inputFile}"\n`;
+console.log('check 1')
+  tag += `    srcset="` + sizes.map(size => `${inputFile}?width=${size} ${size}w`).join(', ') + `"`;
   tag += `    sizes="(max-width: 800px) 100vw, 50vw"\n`;
-  tag += `    style="width: 100%; aspect-ratio: 16/9"\n`;
+  tag += `    style="width: 100%; aspect-ratio: ${ratio}"\n`;
   tag += `    loading="lazy"\n`;
   tag += `    decoding="async"\n`;
   tag += `    alt="Builder.io drag and drop interface"\n`;
   tag += `  />\n`;
   tag += `</picture>\n`;
-
+console.log('check 2')
 
   if (!noclipboard) {
     clipboardy.writeSync(tag);

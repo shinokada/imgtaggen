@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "node-clipboardy": "^1.0.3",
+    "sharp": "^0.31.3",
     "yargs": "^17.6.2"
   },
   "scripts": {
