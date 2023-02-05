@@ -38,7 +38,11 @@ yargs(process.argv.slice(2))
       type: 'string',
       default: '/image'
     })
-  }, (argv) => {
+  }, async (argv) => {
+    if (argv._.length === 0 || argv.help) {
+      yargs.showHelp();
+      process.exit(0);
+    }
     console.log('Generating image tag...')
     console.log('noavif:', argv.noavif)
     console.log('nowebp:', argv.nowebp)
@@ -47,58 +51,67 @@ yargs(process.argv.slice(2))
     const inputFile = yargs.argv._[0] || '/image';
     // const inputFile = yargs.args._[0];
     console.log('input file:', inputFile)
-    generateImgTag(argv.noavif, argv.nowebp, argv.noclipboard, argv.sizes, inputFile);
+    try {
+      await generateImgTag(argv.noavif, argv.nowebp, argv.noclipboard, argv.sizes, inputFile);
+    } catch (error) {
+      console.error(`🚫❌ An error occurred: ${error.message}`);
+      process.exit(1);
+    }
   })
   .version(version)
   .help()
   .argv
 
 async function findAspectRatio(filepath) {
-  const image = sharp(filepath);
-  const metadata = await image.metadata();
-  return metadata.width / metadata.height;
+  try {
+    const image = sharp(filepath);
+    const metadata = await image.metadata();
+    return metadata.width / metadata.height;
+  } catch (error) {
+    console.error(`🚫❌ Failed to get aspect ratio of ${filepath}: ${error.message}`);
+    process.exit(1);
+  }
 }
 
 async function generateImgTag (noavif, nowebp, noclipboard, sizes, inputFile) {
-  const directory = `${path.dirname(inputFile)}/`;
-  console.log('dir:', directory)
-  const inputFileBase = path.basename(inputFile);
-  console.log('input file base:', inputFileBase)
-  const { name, ext } = path.parse(inputFileBase);
-  console.log('name, ext:', name, ext)
-  let tag = `<picture>\n`;
+  try {
+    const directory = `${path.dirname(inputFile)}/`;
+    const inputFileBase = path.basename(inputFile);
+    const { name, ext } = path.parse(inputFileBase);
+    let tag = `<picture>\n`;
 
-  if (!noavif) {
-    tag += `  <source\n`;
-    tag += `    type="image/avif"\n`;
-    tag += `    srcset="` + sizes.map(size => `${directory}${name}.avif?width=${size} ${size}w`).join(', ') + `" />\n`;
-  }
-console.log('done noavif')
-  if (!nowebp) {
-    tag += `  <source\n`;
-    tag += `    type="image/webp"\n`;
-    tag += `    srcset="` + sizes.map(size => `${directory}${name}.webp?width=${size} ${size}w`).join(', ') + `" />\n`;
-  }
-  
-  const ratio = await findAspectRatio(inputFile);
-  console.log('ratio:', ratio)
-  tag += `  <img\n`;
-  tag += `    src="${inputFile}"\n`;
-console.log('check 1')
-  tag += `    srcset="` + sizes.map(size => `${inputFile}?width=${size} ${size}w`).join(', ') + `"`;
-  tag += `    sizes="(max-width: 800px) 100vw, 50vw"\n`;
-  tag += `    style="width: 100%; aspect-ratio: ${ratio}"\n`;
-  tag += `    loading="lazy"\n`;
-  tag += `    decoding="async"\n`;
-  tag += `    alt="Builder.io drag and drop interface"\n`;
-  tag += `  />\n`;
-  tag += `</picture>\n`;
-console.log('check 2')
+    if (!noavif) {
+      tag += `  <source\n`;
+      tag += `    type="image/avif"\n`;
+      tag += `    srcset="` + sizes.map(size => `${directory}${name}.avif?width=${size} ${size}w`).join(', ') + `" />\n`;
+    }
 
-  if (!noclipboard) {
-    clipboardy.writeSync(tag);
-    console.log("Copied output to the clipboard");
-  } else {
-    console.log(tag);
+    if (!nowebp) {
+      tag += `  <source\n`;
+      tag += `    type="image/webp"\n`;
+      tag += `    srcset="` + sizes.map(size => `${directory}${name}.webp?width=${size} ${size}w`).join(', ') + `" />\n`;
+    }
+    
+    const ratio = await findAspectRatio(inputFile);
+    tag += `  <img\n`;
+    tag += `    src="${inputFile}"\n`;
+    tag += `    srcset="` + sizes.map(size => `${inputFile}?width=${size} ${size}w`).join(', ') + `"`;
+    tag += `    sizes="(max-width: 800px) 100vw, 50vw"\n`;
+    tag += `    style="width: 100%; aspect-ratio: ${ratio}"\n`;
+    tag += `    loading="lazy"\n`;
+    tag += `    decoding="async"\n`;
+    tag += `    alt="Builder.io drag and drop interface"\n`;
+    tag += `  />\n`;
+    tag += `</picture>\n`;
+
+    if (!noclipboard) {
+      clipboardy.writeSync(tag);
+      console.log("🚀✅🎉 Copied output to the clipboard 🔥🔥🔥🔥");
+    } else {
+      console.log(tag);
+    }
+  } catch (error) {
+    console.error(`🚫❌ error`);
+    process.exit(1);
   }
 }
