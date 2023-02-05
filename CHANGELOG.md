@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/shinokada/imgtaggen/compare/v1.6.0...v1.6.1) (2023-02-05)
+
+
+### Bug Fixes
+
+* add emojis ([989ad61](https://github.com/shinokada/imgtaggen/commit/989ad6104075ef4127f6d1ec801c12bf3fe57b37))
+
 ## [1.6.0](https://github.com/shinokada/imgtaggen/compare/v1.5.1...v1.6.0) (2023-02-05)
 
 
