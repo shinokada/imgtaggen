@@ -89,19 +89,19 @@ async function generateImgTag (noavif, nowebp, noclipboard, sizes, inputFile, al
     if (!noavif) {
       tag += `  <source\n`;
       tag += `    type="image/avif"\n`;
-      tag += `    srcset="` + sizes.map(size => `${directory}${name}.avif?width=${size} ${size}w`).join(', ') + `" />\n`;
+      tag += `    srcset="` + sizes.map(size => `${directory}${name}-${size}.avif?width=${size} ${size}w`).join(', ') + `" />\n`;
     }
 
     if (!nowebp) {
       tag += `  <source\n`;
       tag += `    type="image/webp"\n`;
-      tag += `    srcset="` + sizes.map(size => `${directory}${name}.webp?width=${size} ${size}w`).join(', ') + `" />\n`;
+      tag += `    srcset="` + sizes.map(size => `${directory}${name}-${size}.webp?width=${size} ${size}w`).join(', ') + `" />\n`;
     }
     
     const ratio = await findAspectRatio(inputFile);
     tag += `  <img\n`;
     tag += `    src="${inputFile}"\n`;
-    tag += `    srcset="` + sizes.map(size => `${inputFile}?width=${size} ${size}w`).join(', ') + `"`;
+    tag += `    srcset="` + sizes.map(size => `${directory}${name}-${size}${ext}?width=${size} ${size}w`).join(', ') + `"\n`;
     tag += `    sizes="(max-width: 800px) 100vw, 50vw"\n`;
     tag += `    style="width: 100%; aspect-ratio: ${ratio}"\n`;
     tag += `    loading="lazy"\n`;
