@@ -15,7 +15,7 @@
 
 A CLI tool for generating a responsive image tag with support for AVIF and WebP formats. It will also calculate image ratio.
 
-It is recommended to use this script in conjunction with [batch-img-con](https://www.npmjs.com/package/batch-img-con).
+It is recommended to use this script in conjunction with [bimgc](https://www.npmjs.com/package/bimgc).
 
 <p align="center">
 <picture>
