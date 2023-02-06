@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.9](https://github.com/shinokada/imgtaggen/compare/v1.6.8...v1.6.9) (2023-02-06)
+
+
+### Bug Fixes
+
+* optimized png ([7c5b6d2](https://github.com/shinokada/imgtaggen/commit/7c5b6d298810cb8b4246395d5a79da05a8ff74d8))
+
 ### [1.6.8](https://github.com/shinokada/imgtaggen/compare/v1.6.7...v1.6.8) (2023-02-06)
 
 ### [1.6.7](https://github.com/shinokada/imgtaggen/compare/v1.6.6...v1.6.7) (2023-02-06)
