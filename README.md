@@ -1,6 +1,5 @@
 <h1 align="center">IMGTAGGEN</h1>
 
-
 <p align="center">
 <a href="https://imgtaggen.codewithshin.com/" rel="nofollow">Image Tag Generator</a>
 </p>
@@ -10,7 +9,7 @@
 <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"><img src="https://img.shields.io/badge/PWA-enabled-brightgreen" alt="PWA Shield"></a>
 <a href="https://www.npmjs.com/package/imgtaggen" rel="nofollow" target="_blank"><img src="https://img.shields.io/npm/v/imgtaggen" alt="npm" height="22" width="97"></a>
 <a href="https://twitter.com/shinokada" rel="nofollow" target="_blank"><img src="https://img.shields.io/badge/created%20by-@shinokada-4BBAAB.svg" alt="Created by Shin Okada" height="22" width="161"></a>
-<a href="http://www.apache.org/licenses/" rel="nofollow" target="_blank"><img src="https://img.shields.io/github/license/shinokada/imgtaggen" alt="License" height="22" width="132"></a>
+<a href="https://opensource.org/licenses/MIT" rel="nofollow" target="_blank"><img src="https://img.shields.io/github/license/shinokada/imgtaggen" alt="License" height="22" width="86"></a>
 <a href="https://www.npmjs.com/package/imgtaggen" rel="nofollow" target="_blank"><img src="https://img.shields.io/npm/dw/imgtaggen.svg" alt="npm" height="22" width="152"></a>
 </p>
 
