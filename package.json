@@ -1,6 +1,6 @@
 {
   "name": "imgtaggen",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "description": "A CLI tool for generating a responsive image tag with support for AVIF and WebP formats",
   "main": "bin/index.js",
   "bin": {
