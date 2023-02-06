@@ -13,10 +13,6 @@
 <a href="https://www.npmjs.com/package/imgtaggen" rel="nofollow" target="_blank"><img src="https://img.shields.io/npm/dw/imgtaggen.svg" alt="npm" height="22" width="152"></a>
 </p>
 
-A CLI tool for generating a responsive image tag with support for AVIF and WebP formats. It will also calculate image ratio.
-
-It is recommended to use this script in conjunction with [bimgc](https://www.npmjs.com/package/bimgc).
-
 <p align="center">
 <picture>
   <source
@@ -35,6 +31,11 @@ It is recommended to use this script in conjunction with [bimgc](https://www.npm
   />
 </picture>
 </p>
+
+
+A CLI tool for generating a responsive image tag with support for AVIF and WebP formats. It will also calculate image ratio.
+
+It is recommended to use this script in conjunction with [bimgc](https://www.npmjs.com/package/bimgc).
 
 ## Installation
 
